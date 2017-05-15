@@ -3,7 +3,9 @@
         <div class="nav-wrapper">
             <a href="{{pathFor 'postFeed'}}" class="brand-logo">Logo</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="">Me</a></li>
+                {{#if currentUser}}
+                    <li><a href="{{pathFor 'userprofile' data=currentUser}}">Me</a></li>
+                {{/if}}
                 {{#if currentUser}}
                     <li><a href="{{pathFor 'postSubmit'}}">Submit Post</a></li>
                 {{/if}}
