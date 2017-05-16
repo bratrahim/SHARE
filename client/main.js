@@ -9,18 +9,57 @@ Template.postFeed.helpers(
         }
     });
 
+Template.comment.helpers(
+    {
+        username:function(){
+            return Meteor.users.findOne({_id:this.userId}).username;
+        },
+        date:function(){
+            return moment(this.timestamp).fromNow();
+
+        },
+    }
+);
+
 Template.post_card.helpers(
     {
         //query for counting likes
         likes: function () {
-            return Posts.find({_id: this._id},{liked: {$exists:true}}).count();
+            var post= Posts.findOne({_id: this._id});
+            return post.liked.length;
+        },
+        numberofcomments: function () {
+            var post= Posts.findOne({_id: this._id});
+            return post.comments.length;
         }
     }
 );
 
 Template.post_card.events({
     "click .likeButton": function (parentContext) {
-        Posts.update({_id: this._id}, {$push: {liked: {userID: Meteor.userId()}}});
+        if(Meteor.userId())
+        {
+            var post = Posts.findOne({_id: this._id});
+            var setOfIds = post.liked;
+            console.log(String(Meteor.userId()));
+            console.log(setOfIds);
+            if(setOfIds.includes(Meteor.userId()))
+            {
+                //do on server side
+                Posts.update({_id: this._id}, {$pull: {liked:  String(Meteor.userId())}});
+            }
+            else
+            {
+                //do on server side
+                Posts.update({_id: this._id}, {$push: {liked:  String(Meteor.userId())}});
+            }
+        }
+        else alert("login");
+    },
+    "click .commentSubmit": function (parentContext) {
+        var comment=$('.comment-textarea').val();
+        //do on server side
+        Posts.update({_id: this._id}, {$push: {comments:  {userId:String(Meteor.userId()),timestamp:new Date(),comment:comment}}});
     }
 });
 
@@ -39,3 +78,4 @@ Template.postSubmit.events({
         })
     }
 });
+

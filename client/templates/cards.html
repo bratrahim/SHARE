@@ -4,7 +4,8 @@
             <img src="{{profileimage}}">
         </a>
         <div class="content">
-            <a class="author">{{username}}</a>
+            <!--work around, needs a fix-->
+            <a href="/users/{{userId}}" class="author">{{username}}</a>
             <div class="metadata">
                 <span class="date">{{date}}</span>
             </div>
@@ -16,18 +17,30 @@
 </template>
 <template name="post_card">
     <div class="card">
-        <div class="card-image">
+        <div class="card-image" style="position: relative">
             <a href="{{pathFor 'postpage'}}">
                 <img src="{{img}}">
             </a>
-            <span class="card-title">{{author}}</span>
+            <a href="/users/{{userId}}"><span class="username card-title">{{author}}</span></a>
             <a style="bottom:28px; right:15px;" class="btn-floating likeButton btn-large right halfway-fab waves-effect waves-light red"><i class="material-icons">thumb_up</i></a>
         </div>
         <div class="card-content">
             <p>{{description}}</p>
-            <span class="card-title">Comments ({{number_of_comments}})</span>
+            <span class="card-title">Comments ({{numberofcomments}})</span>
             <span class="card-title right">{{likes}} Likes</span>
+            <div class="row">
+                <div class="input-field col s12" style="margin-top:0!important;">
+                    <textarea placeholder="Comment" style="padding-top: 0!important;margin-bottom: 0!important;"  class="materialize-textarea comment-textarea"></textarea>
+                    <button class="col s12 waves-effect waves-teal commentSubmit btn" type="submit" name="submit">Post
+                    </button>
+                </div>
+            </div>
             <!--for comment-->
+            <div class="ui comments">
+                {{#each comments}}
+                    {{>comment}}
+                {{/each}}
+            </div>
         </div>
     </div>
 </template>
