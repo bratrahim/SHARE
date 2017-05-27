@@ -1,20 +1,43 @@
-<template name="navigation_bar">
-    <nav>
-        <div class="nav-wrapper">
-            <a href="{{pathFor 'postFeed'}}" class="brand-logo">Logo</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                {{#if currentUser}}
-                    <li><a href="{{pathFor 'userprofile' data=currentUser}}">Me</a></li>
-                {{/if}}
-                {{#if currentUser}}
-                    <li><a href="{{pathFor 'postSubmit'}}">Submit Post</a></li>
-                {{/if}}
-                <li>{{>loginButtons}}</li>
-                <li><a href="">Thread</a></li>
-                <li><a href="">About</a></li>
-            </ul>
+<template name="navigationbar">
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="{{pathFor 'postFeed'}}" class="brand-logo">Logo</a>
+                <ul class="right">
+                    {{#if currentUser}}
+                        <li>{{>atNavButton}}</li>
+                    {{else}}
+                        <li><a href="#atform" class=" modal-trigger btn">Sign in</a></li>
+                    {{/if}}
+                </ul>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    {{#if currentUser}}
+                        <li><a href="{{pathFor 'userprofile' data=currentUser}}">Me</a></li>
+                        <li><a href="{{pathFor 'postSubmit'}}">Submit Post</a></li>
+                    {{/if}}
+                    <li><a href="">Thread</a></li>
+                    <li><a href="">About</a></li>
+                </ul>
+                <a href="#" data-activates="sidenavigation" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul class="side-nav" id="sidenavigation">
+                    {{#if currentUser}}
+                        <li><a href="{{pathFor 'userprofile' data=currentUser}}">Me</a></li>
+                        <li><a href="{{pathFor 'postSubmit'}}">Submit Post</a></li>
+                    {{/if}}
+                    <li><a href="">Thread</a></li>
+                    <li><a href="">About</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+
+    <!-- Modal Structure -->
+    <div id="atform" class="modal">
+        <div class="modal-content">
+            {{>atForm}}
         </div>
-    </nav>
+    </div>
 </template>
 <template name="footer">
     <footer class="page-footer">

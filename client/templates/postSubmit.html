@@ -9,6 +9,20 @@
                 <div class="input-field col s6">
                     <input id="form-image" name="imageUrl" type="text">
                     <label for="form-image">Image</label>
+
+                    <!-- Dropdown Trigger -->
+                    <a class='thread dropdown-button btn' data-activates='threaddropdown'>Select Thread</a>
+
+                    <!-- Dropdown Structure -->
+                    <ul id='threaddropdown' class='dropdown-content'>
+                        <li><a>People</a></li>
+                        <li><a>Fashion</a></li>
+                        <li><a>Art</a></li>
+                        <li><a>Sports</a></li>
+                    </ul>
+                    <h2 class="thread name"></h2>
+
+
                     <button class="btn waves-effect waves-light" type="submit" name="action">Submit
                         <i class="material-icons right">send</i>
                     </button>

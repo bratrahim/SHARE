@@ -1,0 +1,18 @@
+<template name="threads">
+    <div class="thread right collection">
+        <a href="{{pathFor 'threadpage' thread="People"}}" class="collection-item"><span class="badge">1</span>People</a>
+        <a href="{{pathFor 'threadpage' thread="Fashion"}}" class="collection-item"><span class="badge">4</span>Fashion</a>
+        <a href="{{pathFor 'threadpage' thread="Art"}}" class="collection-item"><span class="badge">14</span>Art</a>
+        <a href="{{pathFor 'threadpage' thread="Sports"}}" class="collection-item"><span class="badge">14</span>Sports</a>
+    </div>
+</template>
+
+<template name="threadpage">
+    <div class="row">
+        <div class="col s12 m10 l7">
+            {{#each posts}}
+                {{>post_card}}
+            {{/each}}
+        </div>
+    </div>
+</template>
