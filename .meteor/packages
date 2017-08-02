@@ -22,10 +22,14 @@ juliancwirko:postcss
 less@2.7.9
 jquery@1.11.10
 accounts-password
-accounts-ui
 msavin:mongol
 semantic:ui-comment
 iron:router
 sacha:spin
 check
 audit-argument-checks
+momentjs:moment
+useraccounts:materialize
+useraccounts:iron-routing
+meteor
+accounts-ui

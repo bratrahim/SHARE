@@ -18,5 +18,7 @@ Users.allow({
 Accounts.onCreateUser(function(options, user) {
     user.profile = options.profile ? options.profile : {};
     user.profile['image'] = "https://www.drupal.org/files/profile_default.png";
+    user.username= options.username ? options.username :{};
+    user.username=options.emails.address;
     return user
 });

@@ -22,7 +22,7 @@
                 <img src="{{img}}">
             </a>
             <a href="/users/{{userId}}"><span class="username card-title">{{author}}</span></a>
-            <a style="bottom:28px; right:15px;"  data-position="top" data-delay="30" data-tooltip="Login please" class="btn-floating likeButton btn-large right halfway-fab waves-effect waves-light {{buttoncolor}} tooltipped"><i class="material-icons">thumb_up</i></a>
+            <a style="bottom:28px; right:15px;"  class="btn-floating likeButton btn-large right halfway-fab waves-effect waves-light {{buttoncolor}}"><i class="material-icons">thumb_up</i></a>
         </div>
         <div class="card-content">
             <p>{{description}}</p>
@@ -51,7 +51,7 @@
                 {{>post_card}}
             {{/each}}
         </div>
-        <div class="col s0 m0 l4">
+        <div class="hide-on-small-and-down col s0 m5 l4">
             {{>threads}}
         </div>
     </div>

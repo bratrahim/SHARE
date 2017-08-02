@@ -146,6 +146,7 @@ Template.likedposts.helpers(
 Template.navigationbar.onRendered(function () {
     $(".button-collapse").sideNav();
     $('.modal-trigger').leanModal();
+    $('.dropdown-button').dropdown();
 });
 
 Template.post_card.rendered = function () {

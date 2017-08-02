@@ -2,7 +2,7 @@
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper">
-                <a href="{{pathFor 'postFeed'}}" class="brand-logo">Logo</a>
+                <a href="{{pathFor 'postFeed'}}" class="brand-logo"> Share</a>
                 <ul class="right">
                     {{#if currentUser}}
                         <li>{{>atNavButton}}</li>
@@ -15,7 +15,6 @@
                         <li><a href="{{pathFor 'userprofile' data=currentUser}}">Me</a></li>
                         <li><a href="{{pathFor 'postSubmit'}}">Submit Post</a></li>
                     {{/if}}
-                    <li><a href="">Thread</a></li>
                     <li><a href="">About</a></li>
                 </ul>
                 <a href="#" data-activates="sidenavigation" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -23,9 +22,15 @@
                     {{#if currentUser}}
                         <li><a href="{{pathFor 'userprofile' data=currentUser}}">Me</a></li>
                         <li><a href="{{pathFor 'postSubmit'}}">Submit Post</a></li>
+                        <li><a class="dropdown-button" data-activates="navthreaddropdown">Thread <i class="material-icons right">arrow_drop_down</i></a></li>
                     {{/if}}
-                    <li><a href="">Thread</a></li>
                     <li><a href="">About</a></li>
+                </ul>
+                <ul id="navthreaddropdown" class="dropdown-content">
+                    <li><a href="{{pathFor 'threadpage' thread="People"}}">People</a></li>
+                    <li><a href="{{pathFor 'threadpage' thread="Fashion"}}">Fashion</a></li>
+                    <li><a href="{{pathFor 'threadpage' thread="Art"}}">Art</a></li>
+                    <li><a href="{{pathFor 'threadpage' thread="Sports"}}">Sports</a></li>
                 </ul>
             </div>
         </nav>
